@@ -16,8 +16,6 @@ explanation:
 
 */
 
-
-
 var minEatingSpeed = function(piles, h) {
     let start = 1;
     let end = Math.max(...piles);
