@@ -14,22 +14,22 @@ explanation:
 -in the other case this means that area is sorted so we narrow the range by start=mid+1
 
 *remark:
--the break condition is that
+-the break condition exploits the fact that there are no duplicates in the array, so in an array of one element we find 
+ (start-1+n)%n === start and therefore we break
+-in an already sorted array (start-1+n)%n===n-1 and therefore the break point will be at start=0
 
 */
 
 var findMin = function(nums) {
     const n=nums.length;
-    let start = 0;
-    let end = n-1;
+    let start=0;
+    let end=n-1;
     while(true){
-        let mid = Math.floor((start+end)/2);
-        if(nums[start]<=nums[(start-1+n)%n]){
-            break;
-        }
+        let mid=Math.floor((start+end)/2);
+        if(nums[start]<=nums[(start-1+n)%n]) break;
         else{
-            if(nums[start]>nums[mid]) end = mid-1;
-            else start = mid+1;
+            if(nums[start]>nums[mid]) end=mid-1;
+            else start=mid+1;
         }
     }
     return nums[start];
